@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kstream-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kstream-app
+  template:
+    metadata:
+      labels:
+        app: kstream-app
+    spec:
+      containers:
+        - name: kstream-app
+          image: ${KSTREAM_APP_IMAGE}
+          resources:
+            requests:
+              memory: "256Mi"
+            limits:
+              memory: "1024Mi"

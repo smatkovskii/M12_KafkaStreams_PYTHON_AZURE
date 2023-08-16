@@ -1,0 +1,15 @@
+{
+  "name": "expedia-source-connector",
+  "config": {
+    "connector.class": "io.confluent.connect.azure.blob.storage.AzureBlobStorageSourceConnector",
+    "tasks.max": 1,
+    "mode": "GENERIC",
+    "topic.regex.list": "expedia:.*\\.avro",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "http://schemaregistry.confluent.svc.cluster.local:8081",
+    "format.class": "io.confluent.connect.azure.blob.storage.format.avro.AvroFormat",
+    "azblob.account.name": "$AZURE_STORAGE_ACCOUNT",
+    "azblob.account.key": "$AZURE_STORAGE_ACCOUNT_KEY",
+    "azblob.container.name": "$AZURE_STORAGE_CONTAINER"
+  }
+}
